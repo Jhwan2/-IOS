@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    
+final class ViewController: UIViewController {
+    //MARK: property
     private let textViewHeight: CGFloat = 48
     lazy var idView: UIView = {
         let view = UIView()
@@ -73,7 +73,7 @@ class ViewController: UIViewController {
         tf.spellCheckingType = .no
         tf.isSecureTextEntry = true
         tf.clearsOnBeginEditing = false
-//        tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
+        tf.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         return tf
     }()
     
@@ -115,13 +115,20 @@ class ViewController: UIViewController {
         st.alignment = .fill
         return st
     }()
+    
+    // 오토레이아웃 향후 변경을 위한 변수(애니메이션)
+    lazy var emailInfoLabelCenterYConstraint = idLabel.centerYAnchor.constraint(equalTo: idView.centerYAnchor)
+    lazy var passwordInfoLabelCenterYConstraint = pwLabel.centerYAnchor.constraint(equalTo: pwView.centerYAnchor)
 
-
+    //MARK: cycle in view
     override func viewDidLoad() {
         super.viewDidLoad()
+        pwTextField.delegate = self
+        idTextField.delegate = self
         layoutSet()
         
     }
+    //MARK: Auto Layout set Method
     func layoutSet() {
         view.backgroundColor = .black
         [stackView, pwResetBtn].forEach { view.addSubview($0) }
@@ -137,8 +144,8 @@ class ViewController: UIViewController {
         NSLayoutConstraint.activate([
             idLabel.leadingAnchor.constraint(equalTo: idView.leadingAnchor, constant: 8),
             idLabel.trailingAnchor.constraint(equalTo: idView.trailingAnchor, constant: 8),
-            idLabel.centerYAnchor.constraint(equalTo: idView.centerYAnchor, constant: 0),
-            
+            //idLabel.centerYAnchor.constraint(equalTo: idView.centerYAnchor, constant: 0),
+            emailInfoLabelCenterYConstraint,
             
             idTextField.topAnchor.constraint(equalTo: idView.topAnchor, constant: 15),
             idTextField.bottomAnchor.constraint(equalTo: idView.bottomAnchor, constant: 2),
@@ -148,7 +155,8 @@ class ViewController: UIViewController {
             
             pwLabel.leadingAnchor.constraint(equalTo: pwView.leadingAnchor, constant: 8),
             pwLabel.trailingAnchor.constraint(equalTo: pwView.trailingAnchor, constant: 8),
-            pwLabel.centerYAnchor.constraint(equalTo: pwView.centerYAnchor),
+            //pwLabel.centerYAnchor.constraint(equalTo: pwView.centerYAnchor),
+            passwordInfoLabelCenterYConstraint,
             
             
             pwTextField.topAnchor.constraint(equalTo: pwView.topAnchor, constant: 15),
@@ -175,7 +183,8 @@ class ViewController: UIViewController {
             pwResetBtn.heightAnchor.constraint(equalToConstant: textViewHeight)
         ])
     }
-
+    
+    //MARK: App create Method
     @objc func resetButtonTapped(){
         let alert = UIAlertController(title: "비밀번호를 바꾸기", message: "비밀번호를 바꾸시겠습니까 ? ", preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "확인", style: .default){ action in
@@ -192,6 +201,98 @@ class ViewController: UIViewController {
     @objc func passwordSecureModeSetting(){
         pwTextField.isSecureTextEntry.toggle()
     }
+    
+    // 앱의 화면을 터치하면 동작하는 함수
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 
 }
+//MARK: Extension - TextFieldDelegate
+extension ViewController: UITextFieldDelegate {
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == idTextField {
+            idView.backgroundColor = #colorLiteral(red: 0.2972877622, green: 0.2973434925, blue: 0.297280401, alpha: 1)
+            idLabel.font = UIFont.systemFont(ofSize: 11)
+            // 오토레이아웃 업데이트
+            emailInfoLabelCenterYConstraint.constant = -13
+        }
+        
+        if textField == pwTextField {
+            pwView.backgroundColor = #colorLiteral(red: 0.2972877622, green: 0.2973434925, blue: 0.297280401, alpha: 1)
+            pwLabel.font = UIFont.systemFont(ofSize: 11)
+            // 오토레이아웃 업데이트
+            passwordInfoLabelCenterYConstraint.constant = -13
+        }
+        
+        // 실제 레이아웃 변경은 애니메이션으로 줄꺼야
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == idTextField {
+            idView.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+            // 빈칸이면 원래로 되돌리기
+            if idTextField.text == "" {
+                idLabel.font = UIFont.systemFont(ofSize: 18)
+                emailInfoLabelCenterYConstraint.constant = 0
+            }
+        }
+        if textField == pwTextField {
+            pwView.backgroundColor = #colorLiteral(red: 0.2, green: 0.2, blue: 0.2, alpha: 1)
+            // 빈칸이면 원래로 되돌리기
+            if pwTextField.text == "" {
+                pwLabel.font = UIFont.systemFont(ofSize: 18)
+                passwordInfoLabelCenterYConstraint.constant = 0
+            }
+        }
+        
+        // 실제 레이아웃 변경은 애니메이션으로 줄꺼야
+        UIView.animate(withDuration: 0.3) {
+            self.stackView.layoutIfNeeded()
+        }
+    }
+ 
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        if idTextField.text != "" && pwTextField.text != "" {
+//            loginBtn.backgroundColor = .red
+//            loginBtn.isEnabled = true
+//        }
+//        else {
+//            loginBtn.backgroundColor = .clear
+//            loginBtn.isEnabled = false
+//        }
+//        return true
+//    }
+    
+    @objc func textFieldEditingChanged(_ textField: UITextField){
+        if textField.text?.count == 1 {
+            if textField.text?.first == " " {
+                textField.text = ""
+                return
+            }
+        }
+        guard
+            let email = idTextField.text, !email.isEmpty,
+            let password = pwTextField.text, !password.isEmpty
+        else {
+            loginBtn.backgroundColor = .clear
+            loginBtn.isEnabled = false
+            return
+        }
+        loginBtn.backgroundColor = .red
+        loginBtn.isEnabled = true
+    }
+    
+    // 엔터 누르면 일단 키보드 내림
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+}
+
 
