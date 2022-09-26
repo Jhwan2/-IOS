@@ -104,7 +104,7 @@ class ViewController: UIViewController {
         firstVC.height = Float(heightTf.text!)
         firstVC.weight = Float(weightTf.text!)
         
-        //firstVC.modalPresentationStyle = .fullScreen
+        firstVC.modalPresentationStyle = .fullScreen
         self.present(firstVC, animated: true)
     }
 
