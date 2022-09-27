@@ -78,6 +78,9 @@ class ViewController: UIViewController {
         view.addSubview(heightTf)
         view.addSubview(weightLabel)
         view.addSubview(weightTf)
+        
+        heightTf.delegate = self
+        weightTf.delegate = self
 
         [mainLabel,heightLabel, heightTf, weightLabel,weightTf].map {
             self.stackView.addArrangedSubview($0)
