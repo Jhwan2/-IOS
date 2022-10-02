@@ -38,6 +38,4 @@ class FirstViewController: UIViewController {
         dismiss(animated: true)
         
     }
-    
-    
 }
