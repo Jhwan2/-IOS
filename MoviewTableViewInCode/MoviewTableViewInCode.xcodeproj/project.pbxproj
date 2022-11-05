@@ -17,6 +17,7 @@
 		D82D651228E9A1A800434E6D /* detailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D651128E9A1A800434E6D /* detailViewController.swift */; };
 		D82D651428E9A20900434E6D /* detailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D651328E9A20900434E6D /* detailView.swift */; };
 		D82D651628E9B1D800434E6D /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D651528E9B1D800434E6D /* CustomTableViewCell.swift */; };
+		D82D651828EC345300434E6D /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D82D651728EC345200434E6D /* MovieManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		D82D651128E9A1A800434E6D /* detailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailViewController.swift; sourceTree = "<group>"; };
 		D82D651328E9A20900434E6D /* detailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = detailView.swift; sourceTree = "<group>"; };
 		D82D651528E9B1D800434E6D /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		D82D651728EC345200434E6D /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,7 +71,6 @@
 				D82D650C28E9A0C900434E6D /* model */,
 				D82D650D28E9A0D500434E6D /* view */,
 				D82D650E28E9A0DA00434E6D /* controller */,
-				D82D64FE28E9A0A600434E6D /* Main.storyboard */,
 				D82D650128E9A0A700434E6D /* Assets.xcassets */,
 				D82D650328E9A0A700434E6D /* LaunchScreen.storyboard */,
 				D82D650628E9A0A700434E6D /* Info.plist */,
@@ -81,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				D82D650F28E9A10A00434E6D /* Movie.swift */,
+				D82D651728EC345200434E6D /* MovieManager.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -90,6 +92,7 @@
 			children = (
 				D82D651328E9A20900434E6D /* detailView.swift */,
 				D82D651528E9B1D800434E6D /* CustomTableViewCell.swift */,
+				D82D64FE28E9A0A600434E6D /* Main.storyboard */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -178,6 +181,7 @@
 				D82D64F928E9A0A600434E6D /* AppDelegate.swift in Sources */,
 				D82D651028E9A10A00434E6D /* Movie.swift in Sources */,
 				D82D651628E9B1D800434E6D /* CustomTableViewCell.swift in Sources */,
+				D82D651828EC345300434E6D /* MovieManager.swift in Sources */,
 				D82D651428E9A20900434E6D /* detailView.swift in Sources */,
 				D82D651228E9A1A800434E6D /* detailViewController.swift in Sources */,
 				D82D64FB28E9A0A600434E6D /* SceneDelegate.swift in Sources */,
