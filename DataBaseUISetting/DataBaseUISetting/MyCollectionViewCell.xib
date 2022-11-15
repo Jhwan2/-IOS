@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="" id="gTV-IL-0wX" customClass="MyCollectionViewCell" customModule="DataBaseUISetting" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="180" height="300"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zRE-ie-siD">
+                        <rect key="frame" x="0.0" y="0.0" width="180" height="200"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="200" id="Sgg-9d-xvr"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="fUZ-JX-UXq">
+                        <rect key="frame" x="0.0" y="205" width="180" height="95"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFk-hy-msU">
+                                <rect key="frame" x="69.333333333333329" y="0.0" width="41.333333333333329" height="28.333333333333332"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pMy-QT-l4Z">
+                                <rect key="frame" x="69.333333333333329" y="33.333333333333343" width="41.333333333333329" height="28.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hJ-Me-fpF">
+                                <rect key="frame" x="69.333333333333329" y="66.666666666666686" width="41.333333333333329" height="28.333333333333329"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="zRE-ie-siD" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="2ic-LY-QUc"/>
+                <constraint firstAttribute="bottom" secondItem="fUZ-JX-UXq" secondAttribute="bottom" id="Bbu-T8-oNk"/>
+                <constraint firstItem="zRE-ie-siD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="KsT-fI-e5L"/>
+                <constraint firstAttribute="trailing" secondItem="zRE-ie-siD" secondAttribute="trailing" id="SHi-q4-Xog"/>
+                <constraint firstItem="fUZ-JX-UXq" firstAttribute="top" secondItem="zRE-ie-siD" secondAttribute="bottom" constant="5" id="Yzv-2V-8AU"/>
+                <constraint firstAttribute="trailing" secondItem="fUZ-JX-UXq" secondAttribute="trailing" id="dGv-l6-MaA"/>
+                <constraint firstItem="fUZ-JX-UXq" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="tbP-FM-coM"/>
+                <constraint firstItem="zRE-ie-siD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="weA-cd-rvY"/>
+            </constraints>
+            <connections>
+                <outlet property="detailLabel" destination="6hJ-Me-fpF" id="hUY-xV-HZu"/>
+                <outlet property="mainImgView" destination="zRE-ie-siD" id="iZB-l8-HF1"/>
+                <outlet property="mainLabel" destination="yFk-hy-msU" id="Pxk-wc-giV"/>
+                <outlet property="subLabel" destination="pMy-QT-l4Z" id="ykl-sV-1gm"/>
+            </connections>
+            <point key="canvasLocation" x="21.538461538461537" y="20.616113744075829"/>
+        </collectionViewCell>
+    </objects>
+</document>
