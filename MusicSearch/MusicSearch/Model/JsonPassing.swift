@@ -11,6 +11,9 @@ import UIKit
 
 final class musicSearchManager {
     
+    var musicArr: MusicData!
+    
+    
     func setup(){
         //간단화 한 즉, 자주쓰게될 url 코드
         let musicURL = "https://itunes.apple.com/search?media=music&term="
@@ -36,6 +39,7 @@ final class musicSearchManager {
                    // 내가 정의한(홈페이지로 변환시킨) 구조체로 변환 해줌.
 
                 dump(decodedData)
+                self.musicArr = decodedData
 
             } catch {
                 print("decode Fail!!")
